@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${app}"></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+    <style type="text/css">
+
+        .pd-20 {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="pd-20">
+    <h1 th:text="${app}"></h1>
+    <hr>
+
+    <h2>Install steps</h2>
+
+    <h3>Step 1: Get self-generated root certificate</h3>
+
+    <!--todo download file in resources-->
+    <p>Get self-generated root certificate from <a href="#">here</a></p>
+
+    <h3>Step 2: Install self-generated root certificate</h3>
+
+    <p>How to install self-generated root certificate into your device from
+        <a href="https://www.bounca.org/tutorials/install_root_certificate.html" target="_blank">here</a></p>
+
+    <h3>Step 3: Generate pfx certificate for your domain</h3>
+
+    <ol>
+        <li><a href="https://myssl.com/create_test_cert.html" target="_blank">Generate self-generated
+            certificate</a>.<br>
+            If you have more than one domain, add the domain to sans(高级设置 -> 备用名称) field
+        </li>
+        <li><a href="https://myssl.com/cert_convert.html" target="_blank">Certificate convert tools</a></li>
+    </ol>
+
+    <h3>Step 4: Replace app's key store</h3>
+
+    <p>Put your key store file into <strong>src/main/resources/cert/key-store.pfx</strong></p>
+
+    <h3>Step 5: Build & launch app</h3>
+
+    <p>Enter into project root path and run <strong>./gradlew bootRun</strong></p>
+
+    <h3>Step 6: Add your hack logic</h3>
+
+    <p>See google hack demo in <strong>Hack.java</strong></p>
+
+    <hr>
+
+    <h2>Helpful tools:</h2>
+
+    <hr>
+
+    <p>Get your greeting <a href="greeting">here</a></p>
+
+</div>
+</body>
+</html>
