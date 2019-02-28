@@ -9,50 +9,53 @@
         .pd-20 {
             padding: 20px;
         }
+
+        .code {
+            background: aliceblue;
+            border-radius: 3px;
+            padding: 0 3px;
+        }
     </style>
 </head>
 <body>
 <div class="pd-20">
     <h1 th:text="${app}"></h1>
+    <p>This is a server build in spring boot for hack debug API call</p>
+
     <hr>
 
     <h2>Install steps</h2>
+    <h3>Step 1: Generate self-generated root certificate</h3>
+    <p>Generate self-generated root certificate from
+        <a href="https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/" target="_blank">here</a>
+    </p>
+    <p>I already generated the root certificate in <strong class="code">src/main/resources/cert/root.pem</strong>, you
+        can use it
+        directly.</p>
 
-    <h3>Step 1: Get self-generated root certificate</h3>
+    <p>If you want regenerate a new, just run <strong class="code">src/main/resources/cert/1.gen-root.sh</strong>.</p>
 
-    <!--todo download file in resources-->
-    <p>Get self-generated root certificate from <a href="#">here</a></p>
-
-    <h3>Step 2: Install self-generated root certificate</h3>
-
+    <h3>Step 2: Install self-generated root certificate to your system</h3>
     <p>How to install self-generated root certificate into your device from
         <a href="https://www.bounca.org/tutorials/install_root_certificate.html" target="_blank">here</a></p>
 
-    <h3>Step 3: Generate pfx certificate for your domain</h3>
+    <h3>Step 3: Generate domain certificate for your domain</h3>
+    <p>Add domain name you want hack into <strong class="code">src/main/resources/cert/domain.ext</strong> e.g. <strong
+            class="code">DNS.2 = *.local.dev</strong></p>
+    <p>Run <strong class="code">src/main/resources/cert/2.gen-cert.sh</strong> to generate certificate</p>
 
-    <ol>
-        <li><a href="https://myssl.com/create_test_cert.html" target="_blank">Generate self-generated
-            certificate</a>.<br>
-            If you have more than one domain, add the domain to sans(高级设置 -> 备用名称) field
-        </li>
-        <li><a href="https://myssl.com/cert_convert.html" target="_blank">Certificate convert tools</a></li>
-    </ol>
-
-    <h3>Step 4: Replace app's key store</h3>
-
-    <p>Put your key store file into <strong>src/main/resources/cert/key-store.pfx</strong></p>
+    <h3>Step 4: Add your hack logic</h3>
+    <p>See hack demo in <strong class="code">HackController.java</strong></p>
 
     <h3>Step 5: Build & launch app</h3>
+    <p>Enter into project root path and run <strong class="code">./gradlew bootRun</strong>.</p>
+    <p>If you are running on 80 or 443 port you need sudo permissions.</p>
 
-    <p>Enter into project root path and run <strong>./gradlew bootRun</strong></p>
-
-    <h3>Step 6: Add your hack logic</h3>
-
-    <p>See google hack demo in <strong>Hack.java</strong></p>
-
-    <hr>
-
-    <h2>Helpful tools:</h2>
+    <h3>Step 6: Bind host and visit</h3>
+    <p>Bind hosts <strong class="code">127.0.0.1 hello.local.dev</strong>. See how to bind host
+        <a href="https://www.howtogeek.com/howto/27350/beginner-geek-how-to-edit-your-hosts-file/"
+           target="_blank">here</a></p>
+    <p>Visit <a href="https://hello.local.dev/imghp">https://hello.local.dev/imghp</a></p>
 
     <hr>
 
